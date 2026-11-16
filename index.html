@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10251d"><title>Fit Coach</title>
+<style>
+:root{--bg:#f4f7f4;--card:#fff;--ink:#17251e;--muted:#718078;--green:#16734b;--mint:#e5f4eb;--line:#e4ebe5;--orange:#f2a64a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(135deg,#10251d,#1d563c);color:white;padding:24px 18px 28px;border-radius:0 0 26px 26px}
+.top{display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800;font-size:21px;letter-spacing:.3px}.pill{font-size:12px;background:#ffffff20;padding:7px 11px;border-radius:30px}
+h1{font-size:24px;margin:22px 0 4px}.sub{color:#d4e5da;font-size:13px}
+.wrap{max-width:760px;margin:auto;padding:0 15px 90px}.hero{margin-top:-1px}.weightcard{background:white;border-radius:18px;padding:17px;margin-top:-1px;box-shadow:0 8px 25px #10251d12}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.big{font-size:34px;font-weight:800;color:var(--green)}.small{font-size:12px;color:var(--muted)}
+.track{height:9px;background:#e8eee9;border-radius:10px;overflow:hidden;margin:12px 0 7px}.fill{height:100%;background:#219565;width:40%;border-radius:10px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin:13px 0}.metric,.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:15px}.metric b{display:block;font-size:19px;margin:5px 0}.metric span,.muted{color:var(--muted);font-size:12px}
+nav{display:flex;gap:7px;overflow:auto;padding:13px 0;position:sticky;top:0;background:var(--bg);z-index:3}
+nav button{border:1px solid var(--line);background:white;color:var(--ink);border-radius:30px;padding:9px 13px;white-space:nowrap;font-weight:650}
+nav button.active{background:#173c2b;color:white;border-color:#173c2b}
+section{display:none}section.active{display:block}.section-title{font-size:18px;margin:18px 2px 10px}
+.card{margin-bottom:11px}.card h3{margin:0 0 10px;font-size:15px}.field{display:flex;flex-direction:column;gap:6px;margin:9px 0}.field label{font-size:12px;color:var(--muted)}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fbfdfb;font:inherit;color:var(--ink)}
+button.primary{border:0;background:var(--green);color:white;padding:12px 16px;border-radius:12px;font:inherit;font-weight:700;width:100%;margin-top:7px}
+button.secondary{border:1px solid var(--line);background:#f7faf7;color:var(--ink);padding:10px 12px;border-radius:11px;font:inherit}
+.meal{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.meal:last-child{border:0}
+.tag{background:var(--mint);color:var(--green);border-radius:20px;padding:5px 9px;font-size:11px;white-space:nowrap}
+.list{padding-right:19px;margin:8px 0;color:#33453b;font-size:14px;line-height:1.9}
+.statline{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:11px;margin:25px 0}
+.notice{background:#fff6e9;border:1px solid #f4dfbf;padding:12px;border-radius:13px;color:#765020;font-size:12px;line-height:1.7}
+.empty{color:var(--muted);font-size:13px;padding:8px 0}
+@media(min-width:600px){.grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand">FIT COACH</div><div class="pill">رحلتك إلى 85 KG</div></div>
+<h1>أهلاً بيك في رحلتك 💪</h1><div class="sub">متابعة التغذية والوزن والتمرين — خطوة بخطوة</div></header>
+<div class="wrap">
+<div class="weightcard">
+ <div class="row"><div><div class="small">وزنك الحالي</div><div class="big" id="currentWeight">88.0 <small style="font-size:15px">كجم</small></div></div><div style="text-align:left"><div class="small">الهدف الأول</div><b style="font-size:23px">85 كجم</b></div></div>
+ <div class="track"><div class="fill" id="progress"></div></div><div class="row small"><span id="lost">0 كجم من الهدف</span><span id="remaining">متبقي 3 كجم</span></div>
+</div>
+<div class="grid">
+ <div class="metric"><span>السعرات المبدئية</span><b>1900–2000</b><span>سعرة / يوم</span></div>
+ <div class="metric"><span>البروتين المستهدف</span><b>130–150 جم</b><span>يوميًا</span></div>
+ <div class="metric"><span>التمرين</span><b>3 أيام</b><span>في البيت</span></div>
+ <div class="metric"><span>الصيام</span><b>مرن</b><span>16 ساعة كبداية</span></div>
+</div>
+<nav>
+<button class="active" data-tab="home">الرئيسية</button><button data-tab="food">التغذية</button><button data-tab="weight">الوزن</button><button data-tab="fast">الصيام</button><button data-tab="workout">التمارين</button>
+</nav>
+<section id="home" class="active">
+ <h2 class="section-title">ملخص اليوم</h2>
+ <div class="card"><div class="row"><h3>سجل يومك</h3><span class="tag">تحديث يدوي</span></div>
+ <div class="statline"><span>الوجبات المسجلة</span><b id="mealCount">0</b></div><div class="statline"><span>آخر وزن مسجل</span><b id="homeWeight">88 كجم</b></div><div class="statline"><span>حالة الصيام</span><b id="fastStatus">لم يبدأ</b></div></div>
+ <div class="notice">السعرات والبروتين أهداف مبدئية وليست وصفة طبية. هنراجعها حسب متوسط الوزن والجوع والطاقة والأداء خلال أول أسبوعين. لا تستخدم الصيام لتعويض وجبة، وقلل مدته إذا شعرت بدوخة أو ضعف.</div>
+ <h2 class="section-title">أهداف الأسبوع</h2><div class="card"><ul class="list"><li>تمارين مقاومة 3 أيام أسبوعيًا.</li><li>تسجيل الوزن صباحًا 3 مرات أسبوعيًا.</li><li>متابعة محيط البطن مرة أسبوعيًا.</li><li>اختيار حصتين فاكهة يوميًا ضمن السعرات.</li><li>التركيز على الاستمرارية بدل التعويض أو الحرمان.</li></ul></div>
+</section>
+<section id="food">
+ <h2 class="section-title">التغذية اليومية</h2>
+ <div class="card"><h3>إضافة وجبة</h3><div class="field"><label>اسم الوجبة / الطعام</label><input id="foodName" placeholder="مثال: بانيه جريل + رز + سلطة"></div><div class="grid" style="margin:0"><div class="field"><label>السعرات (اختياري)</label><input id="foodCalories" type="number" min="0" placeholder="مثال 550"></div><div class="field"><label>البروتين جم (اختياري)</label><input id="foodProtein" type="number" min="0" placeholder="مثال 45"></div></div><button class="primary" onclick="addMeal()">حفظ الوجبة</button></div>
+ <div class="card"><div class="row"><h3>سجل الوجبات</h3><button class="secondary" onclick="clearMeals()">مسح سجل اليوم</button></div><div id="mealList" class="empty">لسه مفيش وجبات مسجلة.</div></div>
+ <div class="card"><h3>اختياراتك المعتادة</h3><div class="meal"><span>بيض + جبنة قريش + خضار</span><span class="tag">بروتين</span></div><div class="meal"><span>بانيه مشوي + رز أو بطاطس</span><span class="tag">وجبة رئيسية</span></div><div class="meal"><span>زبادي + فاكهة</span><span class="tag">سناك</span></div><div class="meal"><span>تفاح / تين / جوافة / مجدول</span><span class="tag">فاكهة</span></div><p class="muted">الأوزان والسعرات تختلف حسب الكمية وطريقة التحضير؛ سجّل الكميات الفعلية عند حساب السعرات.</p></div>
+</section>
+<section id="weight">
+ <h2 class="section-title">سجل الوزن</h2><div class="card"><h3>إضافة قياس صباحي</h3><div class="field"><label>الوزن بالكجم</label><input id="weightInput" type="number" min="30" max="300" step=".1" placeholder="88.0"></div><div class="field"><label>محيط البطن سم (اختياري)</label><input id="waistInput" type="number" min="30" max="200" step=".5" placeholder="مثال 98"></div><button class="primary" onclick="addWeight()">حفظ القياس</button></div><div class="card"><h3>سجل القياسات</h3><div id="weightList" class="empty">لا توجد قياسات إضافية بعد.</div></div></section>
+<section id="fast">
+ <h2 class="section-title">مؤقت الصيام</h2><div class="card"><div class="row"><h3>صيام مرن</h3><span class="tag">16 ساعة كبداية</span></div><div class="field"><label>وقت آخر وجبة</label><input id="lastMealTime" type="datetime-local"></div><button class="primary" onclick="startFast()">بدء / تحديث الصيام</button><h2 id="fastTimer" style="text-align:center;font-size:30px;color:var(--green);margin:18px 0 4px">00:00:00</h2><p id="fastHint" class="muted" style="text-align:center">أدخل وقت آخر وجبة لعرض المدة المنقضية.</p><button class="secondary" style="width:100%" onclick="endFast()">إنهاء الصيام</button></div><div class="notice">الصيام اختيار تنظيمي وليس شرطًا للتخسيس. لا تطوّله لمجرد تعويض وجبة. اشرب الماء، وأوقف الصيام إذا شعرت بدوخة أو ضعف أو أعراض غير معتادة.</div></section>
+<section id="workout">
+ <h2 class="section-title">خطة التمرين المنزلي</h2><div class="card"><h3>3 أيام أسبوعيًا</h3><div class="meal"><b>اليوم الأول — جسم كامل</b><span class="tag">مثلاً السبت</span></div><ul class="list"><li>Squat — مجموعتان إلى 3 × 10–12</li><li>Dumbbell Row — 2–3 × 10–12</li><li>Push-ups حسب القدرة — مجموعتان</li><li>Plank — 2 × 20 ثانية</li></ul><div class="meal"><b>اليوم الثاني — جسم كامل</b><span class="tag">مثلاً الاثنين</span></div><ul class="list"><li>Romanian Deadlift — 2–3 × 10–12</li><li>Shoulder Press — 2–3 × 10–12</li><li>Lunges — 2 × 8 لكل رجل</li><li>Dead Bug — 2 × 10</li></ul><div class="meal"><b>اليوم الثالث — جسم كامل</b><span class="tag">مثلاً الأربعاء</span></div><ul class="list"><li>Goblet Squat — 2–3 × 10–12</li><li>Dumbbell Row — 2–3 × 10–12</li><li>Biceps Curl — 2 × 12</li><li>Glute Bridge — 2 × 12</li></ul></div><div class="notice">ابدأ بمجموعتين لو التمارين جديدة، وسخّن 5–8 دقائق. الحركة الصحيحة أهم من عدد التكرارات. أوقف التمرين عند ألم حاد أو دوخة.</div></section>
+<footer>FIT COACH • بياناتك محفوظة على نفس المتصفح في جهازك</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
+const set=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+let meals=get('fc_meals',[]), weights=get('fc_weights',[{weight:88,date:new Date().toLocaleDateString('ar-EG'),waist:''}]), fastStart=localStorage.getItem('fc_fast')||'';
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('section').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')}));
+function render(){let w=weights[weights.length-1]?.weight??88; $('currentWeight').innerHTML=w.toFixed(1)+' <small style="font-size:15px">كجم</small>'; $('homeWeight').textContent=w.toFixed(1)+' كجم';let lost=Math.max(0,88-w), pct=Math.min(100,Math.max(0,lost/3*100));$('progress').style.width=pct+'%';$('lost').textContent=lost.toFixed(1)+' كجم من الهدف';$('remaining').textContent='متبقي '+Math.max(0,w-85).toFixed(1)+' كجم';$('mealCount').textContent=meals.length;$('mealList').innerHTML=meals.length?meals.map((m,i)=>`<div class="meal"><span>${esc(m.name)}<br><small class="muted">${m.cal?m.cal+' سعرة':''} ${m.pro? '• '+m.pro+' جم بروتين':''}</small></span><button class="secondary" onclick="delMeal(${i})">حذف</button></div>`).join(''):'لسه مفيش وجبات مسجلة.';$('weightList').innerHTML=weights.slice().reverse().map(x=>`<div class="statline"><span>${esc(x.date)} ${x.waist?' • بطن '+x.waist+' سم':''}</span><b>${Number(x.weight).toFixed(1)} كجم</b></div>`).join('');$('fastStatus').textContent=fastStart?'قيد المتابعة':'لم يبدأ';updateTimer()}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function addMeal(){let n=$('foodName').value.trim();if(!n)return alert('اكتب اسم الوجبة أولاً');meals.push({name:n,cal:$('foodCalories').value,pro:$('foodProtein').value});set('fc_meals',meals);$('foodName').value='';$('foodCalories').value='';$('foodProtein').value='';render()}
+function delMeal(i){meals.splice(i,1);set('fc_meals',meals);render()}
+function clearMeals(){if(confirm('تمسح سجل الوجبات؟')){meals=[];set('fc_meals',meals);render()}}
+function addWeight(){let w=Number($('weightInput').value);if(!w||w<30||w>300)return alert('أدخل وزنًا صحيحًا');weights.push({weight:w,waist:$('waistInput').value,date:new Date().toLocaleDateString('ar-EG')});set('fc_weights',weights);$('weightInput').value='';$('waistInput').value='';render()}
+function startFast(){let v=$('lastMealTime').value;if(!v)return alert('حدد وقت آخر وجبة');fastStart=new Date(v).toISOString();localStorage.setItem('fc_fast',fastStart);render()}
+function endFast(){fastStart='';localStorage.removeItem('fc_fast');$('fastTimer').textContent='00:00:00';$('fastHint').textContent='تم إنهاء تسجيل الصيام.';render()}
+function updateTimer(){if(!fastStart)return;let ms=Date.now()-new Date(fastStart).getTime();if(ms<0){$('fastHint').textContent='وقت آخر وجبة في المستقبل؛ راجع الوقت.';return}let sec=Math.floor(ms/1000),h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;$('fastTimer').textContent=[h,m,s].map(x=>String(x).padStart(2,'0')).join(':');$('fastHint').textContent= h>=16?'وصلت 16 ساعة. مش لازم تكمل لو مش مرتاح.':'الوقت المتبقي لإكمال 16 ساعة: '+Math.floor((16*3600-sec)/3600)+' ساعة تقريبًا.'}
+render();setInterval(updateTimer,1000);
+</script>
+</body></html>
